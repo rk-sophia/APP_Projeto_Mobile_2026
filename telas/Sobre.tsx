@@ -18,20 +18,20 @@ export default function Sobre() {
       
       <Image source={require('../assets/logo.png')} style={styles.logo} resizeMode="contain"/>
       
-      <Texto estiloEspecifico={styles.texto}>A Sil Fazendo Arte é uma empresa que começou durante a pandemia de 2020 para distração e relaxamento de sua proprietária, Silvia, porém o dom dela não passou despercebido e começou a chamar atenção dos familiares, amigos, amigos dos amigos, familiares dos amigos e por aí seguiu!
+      <Texto estiloEspecifico={styles.texto}>Bem-vindo à Repinte! Somos uma empresa especializada em restauração predial e serviços de pintura profissional.
       {'\n'}{'\n'}
-      Hoje ela tem clientes em várias cidades, estados e até de outro país! 
-      {'\n'}
-      Todos ficam encantados com as artes que ela faz!!!!
-      {'\n'}
-      Todos os produtos são feitos com muito carinho e dedicação e os atendimentos são feitos apenas por WhatsApp ou Instagram.
+      Com mais de uma década de experiência, oferecemos os melhores serviços em repintura, texturização, impermeabilização e restauração de fachadas.
       {'\n'}{'\n'}
-      Veja como funciona a produção: o auxiliar Tony, escolhe criteriosamente qual fita deve ser utilizada.
+      Cada projeto é executado com dedicação e atenção aos detalhes, garantindo qualidade e durabilidade.
+      {'\n'}{'\n'}
+      Nossas equipes são treinadas e preparadas para entregar resultados excepcionais em todos os trabalhos realizados.
+      {'\n'}{'\n'}
+      Transformamos seus espaços com profissionalismo e compromisso!
       </Texto>
       
-      <Image source={require('../assets/escolha_fitas.jpeg')} style={styles.imagem} resizeMode="contain"/>
+      <Image source={require('../assets/logo.png')} style={styles.imagem} resizeMode="contain"/>
       
-      <StatusBar style="light" animated />
+      <StatusBar style="dark" animated />
 
       <VideoView player={player} style={styles.video} allowsPictureInPicture/>
 
@@ -42,12 +42,14 @@ export default function Sobre() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#9900CC',
+    backgroundColor: '#FFFFFF',
     paddingHorizontal:16,
   },
   texto:{
-    color: 'white',
+    color: '#000000',
     paddingVertical: 12,
+    fontSize: 16,
+    lineHeight: 24,
   },
   imagem:{
     height: 350,
