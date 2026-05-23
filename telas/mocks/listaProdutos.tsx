@@ -73,15 +73,6 @@ const lista_produto = {
                 cor: "#FF8C42",
                 icone: "texture-box",
                 slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
-            },
-            {
-                id: 9,
-                nome: "Teste de Percussão com Emissão de Relatório",
-                descricao: "Avaliação técnica com relatório detalhado sobre a condição da superfície.",
-                imagem: require('../../assets/logo.png'),
-                cor: "#1565C0",
-                icone: "clipboard-text",
-                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
             }
         ]
     }

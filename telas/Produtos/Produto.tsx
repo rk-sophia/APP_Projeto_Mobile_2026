@@ -154,7 +154,7 @@ export default function Produto({produto:{id,nome,imagem,descricao,cor,icone,sli
         }
     }
     
-    return <View>
+    return <View style={Style.viewCard}>
                 <Card mode='elevated' style={[styles.card, isBlue ? styles.cardBlue : styles.cardOrange]}>
                     <Card.Cover source={imagem}/>
                     <View style={styles.textContainer}>

@@ -16,7 +16,7 @@ export default function Sobre() {
   return (
     <ScrollView style={styles.container}>
       
-      <Image source={require('../assets/logo.png')} style={styles.logo} resizeMode="contain"/>
+      <Image source={require('../assets/adaptive-icon.png')} style={styles.logo} resizeMode="contain"/>
       
       <VideoView player={player} style={styles.video} allowsPictureInPicture/>
 
@@ -43,7 +43,7 @@ export default function Sobre() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#f8c7a8',
     paddingHorizontal:16,
   },
   texto:{
