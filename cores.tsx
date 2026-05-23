@@ -1,7 +1,7 @@
 // Paleta de cores da Repinte
 export const cores = {
   branco: '#FFFFFF',
-  azulMarinho: '#001F3F',
+  azulMarinho: '#284eca',
   laranjaClaro: '#FF8C42',
   cinzaClaro: '#F5F5F5',
   cinzaMedio: '#CCCCCC',

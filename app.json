@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "APP_PROJETO_MOBILE_2026",
-    "slug": "APP_PROJETO_MOBILE_2026",
+    "name": "APP_Repinte_2026",
+    "slug": "APP_Repinte_2026",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +24,8 @@
     },
     "plugins": [
       "expo-video",
-      "expo-font"
+      "expo-font",
+      "expo-audio"
     ]
   }
 }

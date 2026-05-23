@@ -7,8 +7,8 @@ import Texto from '../componentes/Texto';
 import cores from '../cores';
 
 export default function TelaPerfil() {
-  const [nome, setNome] = useState('João Silva');
-  const [email, setEmail] = useState('joao@email.com');
+  const [nome, setNome] = useState('Sophia R Keller');
+  const [email, setEmail] = useState('sophia@repinte.com');
   const [whatsapp, setWhatsapp] = useState('(11) 98765-4321');
   const [isEditing, setIsEditing] = useState(false);
 

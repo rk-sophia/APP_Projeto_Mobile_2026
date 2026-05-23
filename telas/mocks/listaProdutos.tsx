@@ -1,54 +1,87 @@
 const lista_produto = {
     itens: {
-        titulo: "Nossos Serviços",
+        titulo: "Serviços",
         lista: [
             {
                 id: 1,
-                nome: "Repintura",
+                nome: "Pinturas Externas e Internas",
                 descricao: "Repintura completa de paredes internas e externas com acabamento profissional.",
-                imagem: require('../../assets/logo.png'),
-                cor: "#001F3F",
-                icone: "format-paint"
+                imagem: require('../../assets/externa.jpeg'),
+                cor: "#1565C0",
+                icone: "format-paint",
+                slider: [require('../../assets/externa.jpeg'), require('../../assets/logo.png')]
             },
             {
                 id: 2,
-                nome: "Texturização",
-                descricao: "Aplicação de texturas para dar um acabamento único às suas paredes.",
+                nome: "Hidrojateamento",
+                descricao: "Limpeza técnica por hidro jateamento para remover sujeira e desgastes antigos.",
                 imagem: require('../../assets/logo.png'),
                 cor: "#FF8C42",
-                icone: "texture-box"
+                icone: "water",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
             },
             {
                 id: 3,
-                nome: "Impermeabilização",
-                descricao: "Proteção contra infiltrações e umidade em fachadas e terraços.",
+                nome: "Pastilhas",
+                descricao: "Instalação e recuperação de revestimentos em pastilhas com acabamento durável.",
                 imagem: require('../../assets/logo.png'),
-                cor: "#001F3F",
-                icone: "water-off"
+                cor: "#1565C0",
+                icone: "grid",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
             },
             {
                 id: 4,
-                nome: "Pintura Decorativa",
-                descricao: "Técnicas especiais para criar efeitos decorativos personalizados.",
+                nome: "Tratamento de Trincas",
+                descricao: "Intervenção e vedação profissional para reparar trincas em superfícies.",
                 imagem: require('../../assets/logo.png'),
                 cor: "#FF8C42",
-                icone: "palette"
+                icone: "tools",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
             },
             {
                 id: 5,
-                nome: "Restauração de Fachadas",
-                descricao: "Limpeza, reparos e pintura completa de fachadas.",
+                nome: "Concreto Aparente",
+                descricao: "Acabamento em concreto aparente com proteção e estilo moderno.",
                 imagem: require('../../assets/logo.png'),
-                cor: "#001F3F",
-                icone: "home-city"
+                cor: "#1565C0",
+                icone: "image-filter-frames",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
             },
             {
                 id: 6,
-                nome: "Pintura Residencial",
-                descricao: "Serviço completo para residências com atenção aos detalhes.",
+                nome: "Tijolo Aparente",
+                descricao: "Acabamento rústico com tijolo aparente para fachadas e interiores.",
                 imagem: require('../../assets/logo.png'),
                 cor: "#FF8C42",
-                icone: "home-edit"
+                icone: "wall",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
+            },
+            {
+                id: 7,
+                nome: "Superfície Metálica",
+                descricao: "Tratamento e pintura especializada para superfícies metálicas.",
+                imagem: require('../../assets/logo.png'),
+                cor: "#1565C0",
+                icone: "hammer-wrench",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
+            },
+            {
+                id: 8,
+                nome: "Aplicação de Texturas",
+                descricao: "Texturização personalizada para criar efeitos únicos e modernos.",
+                imagem: require('../../assets/logo.png'),
+                cor: "#FF8C42",
+                icone: "texture-box",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
+            },
+            {
+                id: 9,
+                nome: "Teste de Percussão com Emissão de Relatório",
+                descricao: "Avaliação técnica com relatório detalhado sobre a condição da superfície.",
+                imagem: require('../../assets/logo.png'),
+                cor: "#1565C0",
+                icone: "clipboard-text",
+                slider: [require('../../assets/logo.png'), require('../../assets/externa.jpeg')]
             }
         ]
     }

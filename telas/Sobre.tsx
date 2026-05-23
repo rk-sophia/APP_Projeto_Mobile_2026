@@ -8,7 +8,7 @@ import Texto from '../componentes/Texto'
 export default function Sobre() {
 
   //Indica o vídeo e coloca ele em loop
-  const player = useVideoPlayer('https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4', player => {
+  const player = useVideoPlayer('https://repinte.com.br/wp-content/uploads/2026/04/Video-25-anos-site-correto.mp4', player => {
       player.loop = true
       //player.play()
   })
@@ -18,6 +18,8 @@ export default function Sobre() {
       
       <Image source={require('../assets/logo.png')} style={styles.logo} resizeMode="contain"/>
       
+      <VideoView player={player} style={styles.video} allowsPictureInPicture/>
+
       <Texto estiloEspecifico={styles.texto}>Bem-vindo à Repinte! Somos uma empresa especializada em restauração predial e serviços de pintura profissional.
       {'\n'}{'\n'}
       Com mais de uma década de experiência, oferecemos os melhores serviços em repintura, texturização, impermeabilização e restauração de fachadas.
@@ -33,7 +35,6 @@ export default function Sobre() {
       
       <StatusBar style="dark" animated />
 
-      <VideoView player={player} style={styles.video} allowsPictureInPicture/>
 
     </ScrollView>
   );
