@@ -6,7 +6,7 @@ import PagerView from "react-native-pager-view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Texto from '../../componentes/Texto'
-import Style from './estiloProd'
+import Style from '../Produtos/estiloProd'
 
 const styles = StyleSheet.create({
   card: {
