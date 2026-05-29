@@ -14,6 +14,9 @@ const estilosProd = StyleSheet.create({
         borderColor: "#001F3F",
         borderRadius: 8,
         padding: 12,
+    },
+    viewCard:{
+        marginBottom: 20,
     }
 })
 
