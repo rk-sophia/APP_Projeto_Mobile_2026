@@ -11,7 +11,7 @@ import { useFonts, RobotoFlex_400Regular } from "@expo-google-fonts/roboto-flex"
 import { DeliusSwashCaps_400Regular } from "@expo-google-fonts/delius-swash-caps";
 
 // //Áudio
-// import { useAudioPlayer } from "expo-audio";
+import { useAudioPlayer } from "expo-audio";
 
 //Menu SOBRE
 import TelaSobre from "./telas/Sobre"
@@ -26,40 +26,43 @@ import ListaProdutos from "./telas/mocks/listaProdutos"
 //Menu PERFIL
 import TelaPerfil from "./telas/Perfil"
 
+//Menu ORÇAMENTOS
+import TelaOrcamentos from "./telas/Orcamentos"
+
 function MenuProdutos(){
   return <TelaProduto {...ListaProdutos}/>
 }
 
 //Função para execução do áudio
-// function MenuAudio(){
-  // const audioSource = require('./assets/audio-repinte.mp3');
-  // const player = useAudioPlayer(audioSource);
+function MenuAudio(){
+  const audioSource = require('../APP_Projeto_Mobile_2026/assets/audio/O_Rappa_-_Anjos.mp3');
+  const player = useAudioPlayer(audioSource);
 
   // //Configura o controle liga/desliga
-  // const onOff = () => {
-  //   if(player.playing) {
-  //     player.pause();
-  //   } else {
-  //     if(player.currentTime >= player.duration) {
-  //       player.seekTo(0);
-  //     }
-  //     player.play();
-  //   }
-  // }
+  const onOff = () => {
+    if(player.playing) {
+      player.pause();
+    } else {
+      if(player.currentTime >= player.duration) {
+        player.seekTo(0);
+      }
+      player.play();
+    }
+  }
 
-//   return <TouchableOpacity onPress={onOff} style={{ 
-//     paddingVertical: 12, 
-//     paddingHorizontal: 16,
-//     marginBottom: 8 
-//   }}>
-//               <Texto style={{ 
-//                 color: '#1565C0', 
-//                 fontWeight: 'bold',
-//                 fontSize: 14,
-//                 textAlign: 'center'
-//               }}>🎧 {player.playing ? 'Pausar' : 'Áudio'}</Texto>
-//           </TouchableOpacity>
-// }
+  return <TouchableOpacity onPress={onOff} style={{
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    marginBottom: 8
+  }}>
+              <Texto style={{
+                color: '#1565C0',
+                fontWeight: 'bold',
+                fontSize: 14,
+                textAlign: 'center'
+              }}>🎧 {player.playing ? 'Pausar' : 'Áudio'}</Texto>
+          </TouchableOpacity>
+}
 
 //MENU - BOTTOM TABS
 const Tab = createBottomTabNavigator();
@@ -74,6 +77,8 @@ function Menu(){
                   iconName = focused ? 'information' : 'information-outline';
                 }else if(route.name==="Serviços"){
                   iconName = focused ? 'hammer-screwdriver' : 'hammer-screwdriver';
+                }else if(route.name==="Orçamentos"){
+                  iconName = focused ? 'file-document' : 'file-document-outline';
                 }else if(route.name==="Perfil"){
                   iconName = focused ? 'account' : 'account-outline';
                 }
@@ -86,6 +91,7 @@ function Menu(){
           >
             <Tab.Screen name="Sobre" component={TelaSobre}/>
             <Tab.Screen name="Serviços" component={MenuProdutos}/>
+            <Tab.Screen name="Orçamentos" component={TelaOrcamentos}/>
             <Tab.Screen name="Perfil" component={TelaPerfil}/>
         </Tab.Navigator>
 }
@@ -106,5 +112,5 @@ export default function App() {
             <Menu />
             {/* <MenuAudio/> */}
         </NavigationContainer>
-  
+
 }
