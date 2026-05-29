@@ -10,8 +10,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts, RobotoFlex_400Regular } from "@expo-google-fonts/roboto-flex";
 import { DeliusSwashCaps_400Regular } from "@expo-google-fonts/delius-swash-caps";
 
-// //Áudio
-// import { useAudioPlayer } from "expo-audio";
+//Áudio
+import { useAudioPlayer } from "expo-audio";
 
 //Menu SOBRE
 import TelaSobre from "./telas/Sobre"
@@ -31,35 +31,35 @@ function MenuProdutos(){
 }
 
 //Função para execução do áudio
-// function MenuAudio(){
-  // const audioSource = require('./assets/audio-repinte.mp3');
-  // const player = useAudioPlayer(audioSource);
+function MenuAudio(){
+  const audioSource = require('./assets/O_Rappa_-_Anjos.mp3');
+  const player = useAudioPlayer(audioSource);
 
-  // //Configura o controle liga/desliga
-  // const onOff = () => {
-  //   if(player.playing) {
-  //     player.pause();
-  //   } else {
-  //     if(player.currentTime >= player.duration) {
-  //       player.seekTo(0);
-  //     }
-  //     player.play();
-  //   }
-  // }
+  //Configura o controle liga/desliga
+  const onOff = () => {
+    if(player.playing) {
+      player.pause();
+    } else {
+      if(player.currentTime >= player.duration) {
+        player.seekTo(0);
+      }
+      player.play();
+    }
+  }
 
-//   return <TouchableOpacity onPress={onOff} style={{ 
-//     paddingVertical: 12, 
-//     paddingHorizontal: 16,
-//     marginBottom: 8 
-//   }}>
-//               <Texto style={{ 
-//                 color: '#1565C0', 
-//                 fontWeight: 'bold',
-//                 fontSize: 14,
-//                 textAlign: 'center'
-//               }}>🎧 {player.playing ? 'Pausar' : 'Áudio'}</Texto>
-//           </TouchableOpacity>
-// }
+  return <TouchableOpacity onPress={onOff} style={{ 
+    paddingVertical: 12, 
+    paddingHorizontal: 16,
+    marginBottom: 8 
+  }}>
+              <Texto style={{ 
+                color: '#1565C0', 
+                fontWeight: 'bold',
+                fontSize: 14,
+                textAlign: 'center'
+              }}>🎧 {player.playing ? 'Pausar' : 'Áudio'}</Texto>
+          </TouchableOpacity>
+}
 
 //MENU - BOTTOM TABS
 const Tab = createBottomTabNavigator();
