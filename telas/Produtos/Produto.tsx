@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
   },
   botao: {
-    backgroundColor: '#1565C0',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 8,
     paddingHorizontal: 14,
     borderRadius: 6,
     marginRight: 12,
   },
   textoBotao: {
-    color: '#FFFFFF',
+    color: '#1565C0',
     fontWeight: 'bold',
     fontSize: 14,
   },
@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Produto({produto:{id,nome,imagem,descricao,cor,icone,slider}}:any){
+export default function Produto({produto}:any){
+    const {id,nome,imagem,descricao,cor,icone,slider} = produto;
     const isBlue = cor === "#1565C0";
     const [statusModal, acaoAbreFecha] = useState(false)
 

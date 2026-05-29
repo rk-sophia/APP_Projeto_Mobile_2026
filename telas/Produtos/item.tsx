@@ -59,7 +59,7 @@ export default function Item({prod:{id,nome,imagem,descricao,cor,slider}}:any){
                     <Card.Actions>
                         <TouchableOpacity style={styles.botao} onPress={()=>acaoAbreFecha(true)}>
                             <Texto style={styles.textoBotao}>
-                                <MaterialCommunityIcons name="list" size={12} color="#1565C0"/> Detalhes
+                                <MaterialCommunityIcons name="format-list-bulleted" size={12} color="#1565C0"/> Detalhes
                             </Texto>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
