@@ -1,54 +1,17 @@
 import React, {useState} from "react";
 import { Card } from "react-native-paper";
-import { View, TouchableOpacity, Modal, Image, Alert} from "react-native";
+import { View, TouchableOpacity, Modal, Image} from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PagerView from "react-native-pager-view";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Texto from '../../componentes/Texto';
 import styles from '../Produtos/estiloProd';
 
 export default function Item({prod:{id,nome,imagem,descricao,cor,slider}}:any){
     const isBlue = cor === '#1565C0';
-    const corCoração = isBlue ? '#FFFFFF' : '#1565C0';
     const estiloCard = [styles.card, isBlue ? styles.cardBlue : styles.cardOrange];
-    
+
     const [statusModal, acaoAbreFecha] = useState(false)
-    
-    //Função para salvar o produto na Lista de Desejos
-    async function addListaDesejos(id:any,nome:any,imagem:any,descricao:any){
-        const lista = {id, nome, imagem, descricao}
-
-        //Verifica se o produto já existe na lista
-        const listaDesejosSalva = await AsyncStorage.getItem('ListaDesejos');
-
-        if(listaDesejosSalva!==null){
-            //Já existe uma lista, adiciona mais um produto
-            const listaDesejosNova = JSON.parse(listaDesejosSalva);
-
-            //Verifica se o produto já está na Lista de Desejos
-            const jaExiste = listaDesejosNova.some((item:any)=> item.id===id)
-            if(jaExiste){
-                Alert.alert('Este produto já está na sua Lista de Desejos')
-                return
-            }
-
-            //Inclui o novo produto
-            listaDesejosNova.push(lista)
-
-            //Atualiza o AsyncStorage
-            await AsyncStorage.setItem('ListaDesejos', JSON.stringify(listaDesejosNova))
-            Alert.alert('Produto adicionado na Lista de Desejos')
-            console.log(listaDesejosNova)
-
-        } else {
-            //Não há lista, cria uma e inclui o produto clicado
-            //Salva o produto no AsyncStorage
-            await AsyncStorage.setItem('ListaDesejos', JSON.stringify([lista]))
-            Alert.alert('Produto adicionado na sua Lista de Desejos.')
-            console.log(lista)
-        }
-    }
 
     return <View>
                 <Card mode='elevated' style={estiloCard}> 
@@ -61,9 +24,6 @@ export default function Item({prod:{id,nome,imagem,descricao,cor,slider}}:any){
                             <Texto style={styles.textoBotao}>
                                 <MaterialCommunityIcons name="format-list-bulleted" size={12} color="#1565C0"/> Detalhes
                             </Texto>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
-                            <MaterialCommunityIcons name="heart-outline" size={30} color={corCoração} />
                         </TouchableOpacity>
                     </Card.Actions>
                 </Card>

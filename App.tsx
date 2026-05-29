@@ -14,7 +14,7 @@ import { DeliusSwashCaps_400Regular } from "@expo-google-fonts/delius-swash-caps
 import { useAudioPlayer } from "expo-audio";
 
 //Menu SOBRE
-import TelaSobre from "./telas/Sobre"
+import TelaSobre from "../APP_Projeto_Mobile_2026/telas/Sobre"
 
 //Componente de Texto
 import Texto from "./componentes/Texto"

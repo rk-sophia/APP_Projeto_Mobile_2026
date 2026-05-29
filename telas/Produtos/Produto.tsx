@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Card } from "react-native-paper";
-import { StyleSheet, View, Image, TouchableOpacity, Modal, Alert } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity, Modal } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PagerView from "react-native-pager-view";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Texto from '../../componentes/Texto'
 import Style from '../Produtos/estiloProd'
@@ -120,41 +119,6 @@ export default function Produto({produto}:any){
     const isBlue = cor === "#1565C0";
     const [statusModal, acaoAbreFecha] = useState(false)
 
-    //Função para salvar o produto na Lista de Desejos
-    async function addListaDesejos(id:any,nome:any,imagem:any,descricao:any){
-        const lista = {id, nome, imagem, descricao}
-
-        //Verifica se o produto já existe na lista
-        const listaDesejosSalva = await AsyncStorage.getItem('ListaDesejos');
-
-        if(listaDesejosSalva!==null){
-            //Já existe uma lista, adiciona mais um produto
-            const listaDesejosNova = JSON.parse(listaDesejosSalva);
-
-            //Verifica se o produto já está na Lista de Desejos
-            const jaExiste = listaDesejosNova.some((item:any)=> item.id===id)
-            if(jaExiste){
-                Alert.alert('Este serviço já está na sua Lista de Favoritados')
-                return
-            }
-
-            //Inclui o novo produto
-            listaDesejosNova.push(lista)
-
-            //Atualiza o AsyncStorage
-            await AsyncStorage.setItem('ListaDesejos', JSON.stringify(listaDesejosNova))
-            Alert.alert('Serviço adicionado na Lista de Favoritados')
-            console.log(listaDesejosNova)
-
-        } else {
-            //Não há lista, cria uma e inclui o produto clicado
-            //Salva o produto no AsyncStorage
-            await AsyncStorage.setItem('ListaDesejos', JSON.stringify([lista]))
-            Alert.alert('Serviço adicionado na sua Lista de Favoritados.')
-            console.log(lista)
-        }
-    }
-    
     return <View>
                 <Card mode='elevated' style={[styles.card, isBlue ? styles.cardBlue : styles.cardOrange]}>
                     <Card.Cover source={imagem}/>
@@ -177,9 +141,6 @@ export default function Produto({produto}:any){
                             <Texto style={styles.textoBotao}>
                                 <MaterialCommunityIcons name="information-outline" size={14} color="white"/> Detalhes
                             </Texto>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
-                            <MaterialCommunityIcons name="heart-outline" size={28} color="#1565C0" />
                         </TouchableOpacity>
                     </View>
                 </Card>
