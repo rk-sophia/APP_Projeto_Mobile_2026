@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
+import * as ImagePicker from 'expo-image-picker';
 
 import Texto from '../componentes/Texto';
 import cores from '../cores';
@@ -11,6 +12,29 @@ export default function TelaPerfil() {
   const [email, setEmail] = useState('sophia@repinte.com');
   const [whatsapp, setWhatsapp] = useState('(11) 98765-4321');
   const [isEditing, setIsEditing] = useState(false);
+  const [fotoPerfil, setFotoPerfil] = useState(null); // novo estado
+
+  const abrirCamera = async () => {
+    // Solicita permissão para usar a câmera
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+
+    if (status !== 'granted') {
+      Alert.alert('Permissão necessária', 'Precisamos de acesso à câmera para trocar sua foto.');
+      return;
+    }
+
+    // Abre a câmera
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,   // permite recortar após tirar a foto
+      aspect: [1, 1],        // recorte quadrado (ideal para foto de perfil)
+      quality: 0.8,          // qualidade 80%
+    });
+
+    // Atualiza a foto se o usuário não cancelou
+    if (!result.canceled) {
+      setFotoPerfil(result.assets[0].uri);
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -18,17 +42,16 @@ export default function TelaPerfil() {
         {/* Foto de Perfil */}
         <View style={styles.fotoContainer}>
           <Image
-            source={require('../assets/logo.png')}
+            source={fotoPerfil ? { uri: fotoPerfil } : require('../assets/logo.png')}
             style={styles.fotoPerfil}
           />
-          <TouchableOpacity style={styles.btnCamera}>
+          <TouchableOpacity style={styles.btnCamera} onPress={abrirCamera}>
             <MaterialCommunityIcons name="camera" size={20} color="#FFFFFF" />
           </TouchableOpacity>
         </View>
 
         {/* Formulário */}
         <View style={styles.formContainer}>
-          {/* Nome */}
           <View style={styles.fieldGroup}>
             <Texto style={styles.label}>Nome</Texto>
             <TextInput
@@ -40,7 +63,6 @@ export default function TelaPerfil() {
             />
           </View>
 
-          {/* Email */}
           <View style={styles.fieldGroup}>
             <Texto style={styles.label}>Email</Texto>
             <TextInput
@@ -53,7 +75,6 @@ export default function TelaPerfil() {
             />
           </View>
 
-          {/* WhatsApp */}
           <View style={styles.fieldGroup}>
             <Texto style={styles.label}>WhatsApp</Texto>
             <TextInput
@@ -66,15 +87,14 @@ export default function TelaPerfil() {
             />
           </View>
 
-          {/* Botão Editar/Salvar */}
           <TouchableOpacity
             style={styles.btnEditar}
             onPress={() => setIsEditing(!isEditing)}
           >
-            <MaterialCommunityIcons 
-              name={isEditing ? "check" : "pencil"} 
-              size={20} 
-              color="#FFFFFF" 
+            <MaterialCommunityIcons
+              name={isEditing ? "check" : "pencil"}
+              size={20}
+              color="#FFFFFF"
             />
             <Texto style={styles.btnEditarTexto}>
               {isEditing ? 'Salvar' : 'Editar Perfil'}
@@ -88,6 +108,7 @@ export default function TelaPerfil() {
   );
 }
 
+// ... styles permanecem idênticos
 const styles = StyleSheet.create({
   container: {
     flex: 1,

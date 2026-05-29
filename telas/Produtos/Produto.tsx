@@ -178,9 +178,9 @@ export default function Produto({produto}:any){
                                 <MaterialCommunityIcons name="information-outline" size={14} color="white"/> Detalhes
                             </Texto>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
+                        {/* <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
                             <MaterialCommunityIcons name="heart-outline" size={28} color="#1565C0" />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </Card>
 

@@ -31,7 +31,7 @@ export default function Sobre() {
       Transformamos seus espaços com profissionalismo e compromisso!
       </Texto>
       
-      <Image source={require('../assets/logo.png')} style={styles.imagem} resizeMode="contain"/>
+      <Image source={require('../assets/work.png')} style={styles.imagem} resizeMode="contain"/>
       
       <StatusBar style="dark" animated />
 
