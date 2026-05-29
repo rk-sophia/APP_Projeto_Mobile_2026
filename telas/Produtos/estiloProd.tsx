@@ -12,12 +12,8 @@ const estilosProd = StyleSheet.create({
         alignSelf: "center",
         borderWidth: 2,
         borderColor: "#001F3F",
-        backgroundColor: "#F5F5F5",
         borderRadius: 8,
         padding: 12,
-    },
-    viewCard : {
-        marginBottom:20,
     }
 })
 

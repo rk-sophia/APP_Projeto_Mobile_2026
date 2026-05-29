@@ -6,9 +6,12 @@ import PagerView from "react-native-pager-view";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Texto from '../../componentes/Texto';
-import styles from './estilosProdutos';
+import styles from '../Produtos/estiloProd';
 
-export default function Item({prod:{id,nome,imagem,descricao,slider}}:any){
+export default function Item({prod:{id,nome,imagem,descricao,cor,slider}}:any){
+    const isBlue = cor === '#1565C0';
+    const corCoração = isBlue ? '#FFFFFF' : '#1565C0';
+    const estiloCard = [styles.card, isBlue ? styles.cardBlue : styles.cardOrange];
     
     const [statusModal, acaoAbreFecha] = useState(false)
     
@@ -48,7 +51,7 @@ export default function Item({prod:{id,nome,imagem,descricao,slider}}:any){
     }
 
     return <View>
-                <Card mode='elevated' style={styles.card}> 
+                <Card mode='elevated' style={estiloCard}> 
                     <Card.Content>
                         <Texto style={styles.nomeProduto}>{nome}</Texto>
                     </Card.Content>
@@ -56,11 +59,11 @@ export default function Item({prod:{id,nome,imagem,descricao,slider}}:any){
                     <Card.Actions>
                         <TouchableOpacity style={styles.botao} onPress={()=>acaoAbreFecha(true)}>
                             <Texto style={styles.textoBotao}>
-                                <MaterialCommunityIcons name="list" size={12} color="white"/> Detalhes
+                                <MaterialCommunityIcons name="format-list-bulleted" size={12} color="#1565C0"/> Detalhes
                             </Texto>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>addListaDesejos(id,nome,imagem,descricao)}>
-                            <MaterialCommunityIcons name="heart-outline" size={30} color="#1565C0" />
+                            <MaterialCommunityIcons name="heart-outline" size={30} color={corCoração} />
                         </TouchableOpacity>
                     </Card.Actions>
                 </Card>
@@ -71,16 +74,20 @@ export default function Item({prod:{id,nome,imagem,descricao,slider}}:any){
                             <Texto style={styles.nomeProduto}>{nome}</Texto>
                             <Texto style={styles.descProduto}>{descricao}</Texto>
                             {/* <Image source={imagem} style={styles.imagemModal} resizeMode="contain"/> */}
-                            <PagerView initialPage={0} style={styles.container}>
-                                {/* Monta o laço de repetição para as imagens do Slider */}
-                                {slider.map((img:any, index:any)=> (
-                                    <View style={styles.page} key={index}>
-                                        <Image source={img} style={styles.imagemSlider} resizeMode="contain"/>
-                                    </View>
-                                ))}
-                            </PagerView>
+                            {slider && slider.length > 0 ? (
+                                <PagerView initialPage={0} style={styles.container}>
+                                    {/* Monta o laço de repetição para as imagens do Slider */}
+                                    {slider.map((img:any, index:any)=> (
+                                        <View style={styles.page} key={index}>
+                                            <Image source={img} style={styles.imagemSlider} resizeMode="contain"/>
+                                        </View>
+                                    ))}
+                                </PagerView>
+                            ) : (
+                                <Image source={imagem} style={[styles.imagemSlider, { height: 250 }]} resizeMode="contain"/>
+                            )}
                             <TouchableOpacity onPress={()=>acaoAbreFecha(false)}>
-                                <MaterialCommunityIcons name="close" size={30} color="#1565C0"/>
+                                <MaterialCommunityIcons name="close" size={30} color="#fff"/>
                             </TouchableOpacity>
                         </View>
                     </View>
